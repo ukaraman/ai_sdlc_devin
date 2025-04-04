@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# Swift Money Transfer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application for international money transfers following CBPR+ rules.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Send money to European countries using SWIFT/CBPR+ network
+- Support for EUR, USD, and GBP currencies
+- CBPR+ compliant validation rules
+- Transfer history tracking
 
-## Expanding the ESLint configuration
+## CBPR+ Compliance
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This application implements the CBPR+ (Cross-Border Payments and Reporting Plus) rules for international money transfers, including:
 
-- Configure the top-level `parserOptions` property like this:
+- Proper account identification (IBAN)
+- BIC/SWIFT code validation
+- Currency restrictions (EUR, USD, GBP only)
+- European country destination validation
+- Reference message character validation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```
+git clone <repository-url>
+cd swift-money-transfer
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies
 ```
+npm install
+```
+
+3. Start the development server
+```
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Usage
+
+1. Fill in the transfer form with:
+   - Currency and amount
+   - Sender information (name and IBAN)
+   - Recipient information (name, IBAN, BIC/SWIFT code)
+   - Destination country (European countries only)
+   - Optional reference message
+
+2. Submit the form to initiate the transfer
+
+3. View your transfer history in the "Transfer History" tab
+
+## Technologies Used
+
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+
+## Project Structure
+
+- `src/App.tsx` - Main application component
+- `src/utils/validation.ts` - CBPR+ validation rules
+- `src/components/ui/` - UI components from shadcn/ui
